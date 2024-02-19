@@ -22,11 +22,11 @@ test('checks if true is truthy', () => {
 describe('AppStack', () => {
   it('renders the correct home', async () => {
     const {getAllByText} = render(<AppNavigation />);
-    await waitFor(() => getAllByText('Home'));
+    await waitFor(() => getAllByText('Dashboard'));
   });
   it('renders the correct details', async () => {
     const {getAllByText} = render(<AppNavigation />);
-    await waitFor(() => getAllByText('Details'));
+    await waitFor(() => getAllByText('Profile'));
   });
   it('renders the correct market', async () => {
     const {getAllByText} = render(<AppNavigation />);
