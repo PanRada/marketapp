@@ -8,6 +8,10 @@ module.exports = {
         alias: {
           '@screens': './src/screens',
           '@navigation': './src/navigation',
+          '@hooks': './src/hooks',
+          '@mocks': './src/mocks',
+          '@api': './src/api',
+          '@components': './src/components',
         },
       },
     ],
