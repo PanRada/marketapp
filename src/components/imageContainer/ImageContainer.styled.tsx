@@ -6,7 +6,7 @@ export const ImageContainer = styled.Pressable`
   margin: 12px;
   justify-content: center;
   align-items: center;
-  border-width: 2;
+  border-width: 2px;
   border-color: red;
   border-radius: 10px;
 `;
