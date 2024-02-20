@@ -1,3 +1,13 @@
+Description of the task and made shuffles
+
+- modularization was taken care of
+- separation of presentation and logic
+- added style-components to show knowledge of this area
+- webscockets are added as a context to free from rerendering
+- organization of the project very limited but adequate to the task
+- some tests added to show implementation and knowledge
+
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
