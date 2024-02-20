@@ -66,6 +66,7 @@ const HomeScreen: React.FC<{navigation: any}> = ({navigation}) => {
       <Carousel
         layout={'default'}
         data={images}
+        //@ts-ignore https://github.com/meliorence/react-native-snap-carousel/pull/678
         renderItem={renderItem}
         sliderWidth={360}
         itemWidth={300}
