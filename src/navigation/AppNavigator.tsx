@@ -45,7 +45,15 @@ const AppNavigator = () => {
           headerTitleAlign: 'center',
         })}>
         <Tab.Screen name="Dashboard" component={HomeScreen} />
-        <Tab.Screen name="Profile" component={DetailsScreen} />
+        <Tab.Screen
+          name="Profile"
+          component={DetailsScreen}
+          listeners={() => ({
+            tabPress: e => {
+              e.preventDefault();
+            },
+          })}
+        />
         <Tab.Screen name="Market" component={MarketScreen} />
       </Tab.Navigator>
     </NavigationContainer>
