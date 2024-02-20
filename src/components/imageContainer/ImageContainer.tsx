@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
-import {ImageContainer, Image} from './ImageContainer.styled';
+import {ImageContainer} from './ImageContainer.styled';
+import Image from '@components/image/Image';
 import {ImageProps} from './types';
+
 const ImageContainerComponent: React.FC<ImageProps> = ({
   id,
   uri,
@@ -11,10 +13,10 @@ const ImageContainerComponent: React.FC<ImageProps> = ({
     setHasError(true);
   };
   return (
-    <ImageContainer onPress={() => handlePress(id)} testID="image-container">
-      {!hasError && (
-        <Image source={{uri: uri}} onError={handleError} testID="image" />
-      )}
+    <ImageContainer
+      onPress={() => handlePress && handlePress(id)}
+      testID="image-container">
+      {!hasError && <Image source={uri} onError={handleError} testID="image" />}
     </ImageContainer>
   );
 };
