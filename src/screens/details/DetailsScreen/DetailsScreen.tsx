@@ -1,21 +1,17 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import Image from '@components/image/Image';
+import Container from '@components/container/Container';
+import Info from '@components/infoContainer/InfoContainer';
 
-//TODO: Template Screen replace with your own screen
-const DetailsScreen = () => {
+const DetailsScreen = ({route}: {route: any}) => {
+  const {selectedImage, ipInfo} = route.params;
+
   return (
-    <View style={styles.container}>
-      <Text>This is an empty screen</Text>
-    </View>
+    <Container>
+      <Image source={selectedImage.uri} />
+      <Info ipInfo={ipInfo} />
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default DetailsScreen;
