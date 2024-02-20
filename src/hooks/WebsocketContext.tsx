@@ -11,12 +11,14 @@ interface WebSocketContextType {
   connectWebSocket: () => void;
   disconnectWebSocket: () => void;
   trades: number[];
+  errorMsg: string | null;
 }
 
 const WebSocketContext = createContext<WebSocketContextType>({
   connectWebSocket: () => {},
   disconnectWebSocket: () => {},
   trades: [],
+  errorMsg: null,
 });
 
 interface WebSocketProviderProps {
@@ -28,6 +30,7 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({
 }) => {
   const wsRef = useRef<WebSocket | null>(null);
   const [trades, setTrades] = useState<number[]>([]);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const maxTradesToShow = 20; // Adjust based on how many trades you want to display
 
   const connectWebSocket = useCallback(() => {
@@ -45,7 +48,7 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({
       ]);
     };
     wsRef.current.onerror = error => {
-      console.error('WebSocket Error:', error);
+      setErrorMsg(error.message);
     };
     wsRef.current.onclose = () => {
       console.log('WebSocket Disconnected');
@@ -58,7 +61,7 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({
 
   return (
     <WebSocketContext.Provider
-      value={{connectWebSocket, disconnectWebSocket, trades}}>
+      value={{connectWebSocket, disconnectWebSocket, trades, errorMsg}}>
       {children}
     </WebSocketContext.Provider>
   );

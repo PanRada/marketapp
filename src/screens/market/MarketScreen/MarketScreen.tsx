@@ -7,7 +7,8 @@ import {LineChart} from 'react-native-chart-kit';
 import {useWebSocket} from '@hooks/WebsocketContext';
 
 const MarketScreen = () => {
-  const {connectWebSocket, disconnectWebSocket, trades} = useWebSocket();
+  const {connectWebSocket, disconnectWebSocket, trades, errorMsg} =
+    useWebSocket();
   const isFocused = useIsFocused();
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const MarketScreen = () => {
     [trades],
   );
 
-  const isNotEmpty = trades.length > 0;
+  const isNotEmpty = trades.length > 0 && !errorMsg;
 
   return (
     <Container>
@@ -61,6 +62,7 @@ const MarketScreen = () => {
           }}
         />
       )}
+      {errorMsg && <Text text={errorMsg} />}
     </Container>
   );
 };
